@@ -19,13 +19,6 @@ Upstream source inspected: commit `3853c99c99c1e610ae0dee3547a1429b0c097300`,
 generator version `1.3.0`. The unmodified Python generator, its tests and key
 are retained in `upstream/` for review and format comparison.
 
-The independently implemented Android UI is visually inspired by
-[statist1c/MGU-Store-Installer](https://github.com/statist1c/MGU-Store-Installer),
-reference commit `4fea4e5f3c7235477be86dddf08c808017c2c96f`. No installer code,
-GPL-covered implementation, bundled image, font or logo is copied into this app.
-The selected certificate/check icon with **MGU FSC** lettering is an original
-vector asset created for this port. Original authors retain all their rights.
-
 ## Features
 
 - Application and extended ID7 Live Maps formats, including component protection variants.
