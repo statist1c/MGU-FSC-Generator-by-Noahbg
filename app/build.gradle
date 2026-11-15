@@ -1,0 +1,30 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'dev.mgu.fsc'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'dev.mgu.fsc.noahbg'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+        buildConfigField 'String', 'UPDATE_REPOSITORY', '"statist1c/MGU-FSC-Generator-by-Noahbg"'
+        testInstrumentationRunner project.findProperty('instrumentationRunner') ?: 'dev.mgu.fsc.SmokeTest'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+    buildFeatures { buildConfig true }
+    if (project.hasProperty('updateTestAssets')) {
+        sourceSets.androidTest.assets.srcDir file(project.property('updateTestAssets'))
+    }
+    signingConfigs {
+        release {
+            if (project.hasProperty('releaseKeystore')) {
+                storeFile file(project.property('releaseKeystore'))
+                storePassword System.getenv('MGU_KEYSTORE_PASSWORD')
+                keyAlias 'mgu-fsc'
+                keyPassword System.getenv('MGU_KEYSTORE_PASSWORD')
+            }
+        }
+    }
+    buildTypes { release { signingConfig signingConfigs.release } }
+}
